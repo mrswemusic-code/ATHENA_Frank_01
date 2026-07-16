@@ -1,4 +1,3 @@
-from src.core.cognition.cognitive_engine import CognitiveEngine
 from src.core.logger.logger import AthenaLogger
 
 
@@ -82,7 +81,7 @@ class AthenaKernel:
 
 
         telemetry = TelemetryManager()
-        cognition = CognitiveEngine()
+
 
 
         #
@@ -122,8 +121,6 @@ class AthenaKernel:
             "loop": loop,
 
             "telemetry": telemetry,
-
-            "cognition": cognition,
 
             "services": services
 
