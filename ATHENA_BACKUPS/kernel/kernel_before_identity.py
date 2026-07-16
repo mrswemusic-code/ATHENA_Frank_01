@@ -1,14 +1,10 @@
 from src.core.logger.logger import AthenaLogger
 
+
 from src.core.registry.registry import AthenaRegistry
 
-from src.core.identity.identity_manager import IdentityManager
 
 from src.core.memory.memory_engine import MemoryEngine
-
-from src.core.context.context_engine import ContextEngine
-
-from src.core.telemetry.telemetry_manager import TelemetryManager
 
 from src.core.events.event_bus import EventBus
 
@@ -22,7 +18,9 @@ from src.core.state.state_manager import StateManager
 
 from src.core.runtime.runtime_manager import RuntimeManager
 
+
 from src.core.loop.event_loop import EventLoop
+
 
 from src.core.commands.command_manager import CommandManager
 
@@ -30,34 +28,36 @@ from src.core.commands.command_loader import CommandLoader
 
 from src.core.commands.bus.command_bus import CommandBus
 
+
 from src.services.core.service_manager import ServiceManager
 
 from src.services.system.hardware_service import HardwareService
 
 
+
+
 class AthenaKernel:
 
+
+
     def __init__(self):
+
 
         AthenaLogger.info(
             "Loading ATHENA Kernel..."
         )
 
+
         self.registry = AthenaRegistry()
+
 
         self.booted = False
 
-        # =====================================================
-        # CORE
-        # =====================================================
 
-        self.identity = None
+
+        # CORE
 
         self.memory = None
-
-        self.context = None
-
-        self.telemetry = None
 
         self.events = None
 
@@ -71,50 +71,51 @@ class AthenaKernel:
 
         self.runtime = None
 
-        # =====================================================
+
+
         # SERVICES
-        # =====================================================
 
         self.services = None
 
-        # =====================================================
+
+
         # LOOP
-        # =====================================================
 
         self.loop = None
 
-        # =====================================================
+
+
         # COMMAND SYSTEM
-        # =====================================================
 
         self.commands = None
 
         self.command_bus = None
 
+
+
+
+
     def boot(self):
 
+
         if self.booted:
+
             return
+
+
 
         AthenaLogger.info(
             "Booting Kernel..."
         )
 
-        # =====================================================
-        # IDENTITY
-        # =====================================================
 
-        self.identity = IdentityManager()
 
-        # =====================================================
-        # CORE ENGINES
-        # =====================================================
+        # ==========================
+        # CORE COMPONENTS
+        # ==========================
+
 
         self.memory = MemoryEngine()
-
-        self.context = ContextEngine()
-
-        self.telemetry = TelemetryManager()
 
         self.events = EventBus()
 
@@ -128,152 +129,199 @@ class AthenaKernel:
 
         self.runtime = RuntimeManager()
 
-        # =====================================================
+
+
+        # ==========================
         # SERVICES
-        # =====================================================
+        # ==========================
+
 
         self.services = ServiceManager()
+
 
         self.services.register(
             HardwareService()
         )
 
-        # =====================================================
-        # COMMANDS
-        # =====================================================
+
+
+        # ==========================
+        # COMMAND SYSTEM
+        # ==========================
+
 
         self.commands = CommandManager()
+
 
         loader = CommandLoader(
             self
         )
 
+
         loader.load(
             self.commands
         )
+
 
         self.command_bus = CommandBus(
             self.commands
         )
 
-        # =====================================================
-        # LOOP
-        # =====================================================
+
+
+        # ==========================
+        # EVENT LOOP
+        # ==========================
+
 
         self.loop = EventLoop(
             rate=1.0
         )
 
-        # =====================================================
-        # REGISTRY
-        # =====================================================
 
-        self.registry.register(
-            "identity",
-            self.identity
-        )
+
+        # ==========================
+        # REGISTRY
+        # ==========================
+
 
         self.registry.register(
             "memory",
             self.memory
         )
 
-        self.registry.register(
-            "context",
-            self.context
-        )
 
         self.registry.register(
-            "telemetry",
-            self.telemetry
+            "memory_manager",
+            self.memory
         )
 
-        self.registry.register(
-            "events",
-            self.events
-        )
-
-        self.registry.register(
-            "scheduler",
-            self.scheduler
-        )
-
-        self.registry.register(
-            "monitor",
-            self.monitor
-        )
-
-        self.registry.register(
-            "hardware",
-            self.hardware
-        )
-
-        self.registry.register(
-            "state",
-            self.state
-        )
-
-        self.registry.register(
-            "runtime",
-            self.runtime
-        )
-
-        self.registry.register(
-            "services",
-            self.services
-        )
 
         self.registry.register(
             "commands",
             self.commands
         )
 
+
         self.registry.register(
             "command_bus",
             self.command_bus
         )
+
+
+        self.registry.register(
+            "events",
+            self.events
+        )
+
+
+        self.registry.register(
+            "scheduler",
+            self.scheduler
+        )
+
+
+        self.registry.register(
+            "monitor",
+            self.monitor
+        )
+
+
+        self.registry.register(
+            "hardware",
+            self.hardware
+        )
+
+
+        self.registry.register(
+            "state",
+            self.state
+        )
+
+
+        self.registry.register(
+            "runtime",
+            self.runtime
+        )
+
+
+        self.registry.register(
+            "services",
+            self.services
+        )
+
 
         self.registry.register(
             "loop",
             self.loop
         )
 
-        # =====================================================
-        # START RUNTIME
-        # =====================================================
+
+
+        # ==========================
+        # RUNTIME START
+        # ==========================
+
 
         self.runtime.boot()
 
+
+
         self.booted = True
+
+
 
         AthenaLogger.info(
             "Kernel ONLINE."
         )
 
+
+
+
+
     def start(self):
 
+
         if not self.booted:
+
             self.boot()
 
+
+
         self.loop.start()
+
+
 
         AthenaLogger.info(
             "Kernel LOOP ACTIVE."
         )
 
+
+
+
+
     def stop(self):
 
+
         if self.loop:
+
             self.loop.stop()
+
+
 
         AthenaLogger.info(
             "Kernel STOPPED."
         )
 
+
+
+
+
     def get(
         self,
         component
     ):
+
 
         return self.registry.get(
             component

@@ -1,38 +1,41 @@
 from src.core.kernel.kernel import AthenaKernel
 
 
+
 kernel = AthenaKernel()
 
 
 kernel.boot()
 
 
-print("\nKERNEL STATUS")
 
-print(
-    kernel.status()
-)
+print("\nATHENA REGISTRY TEST\n")
 
 
-print("\nCOMPONENT CHECK")
+components = [
+
+    "identity",
+    "memory",
+    "telemetry",
+    "events",
+    "commands",
+    "command_bus",
+    "runtime",
+    "loop"
+
+]
 
 
-for component in kernel.registry.list():
+for component in components:
 
-    result = kernel.get(component)
 
-    print(
-        component,
-        "OK" if result else "ERROR"
+    result = kernel.get(
+        component
     )
 
 
-kernel.start()
-
-
-import time
-
-time.sleep(3)
-
-
-kernel.stop()
+    print(
+        component,
+        ":",
+        "ONLINE" if result else "MISSING"
+    )
