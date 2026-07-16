@@ -1,0 +1,229 @@
+.
+├── assets
+├── ATHENA_BACKUPS
+│   └── application
+│       └── application_before_runtime.py
+├── athena_tree.txt
+├── bin
+│   └── athena
+├── configs
+│   ├── services
+│   │   └── services.yaml
+│   └── ui.yaml
+├── data
+│   └── hud_position.json
+├── docs
+├── .gitignore
+├── launcher.py
+├── README.md
+├── requirements
+│   └── requirements.txt
+├── runtime
+│   ├── cache
+│   ├── events
+│   ├── logs
+│   ├── pids
+│   ├── socket
+│   └── tmp
+├── src
+│   ├── agents
+│   │   ├── agent_manager.py
+│   │   ├── base_agent.py
+│   │   └── __init__.py
+│   ├── api
+│   │   └── __init__.py
+│   ├── config
+│   │   ├── constants.py
+│   │   ├── __init__.py
+│   │   ├── logger.py
+│   │   ├── manager
+│   │   │   ├── config_manager.py
+│   │   │   └── __init__.py
+│   │   ├── settings.py
+│   │   └── ui_config.py
+│   ├── core
+│   │   ├── agents
+│   │   │   ├── agent_manager.py
+│   │   │   ├── agent.py
+│   │   │   ├── base_agent.py
+│   │   │   └── __init__.py
+│   │   ├── application.py
+│   │   ├── boot.py
+│   │   ├── bus
+│   │   │   ├── bus.py
+│   │   │   ├── __init__.py
+│   │   │   └── message.py
+│   │   ├── config
+│   │   │   ├── config_manager.py
+│   │   │   ├── __init__.py
+│   │   │   └── settings.py
+│   │   ├── engine.py
+│   │   ├── events
+│   │   │   ├── event_bus.py
+│   │   │   ├── event.py
+│   │   │   ├── event_types.py
+│   │   │   └── __init__.py
+│   │   ├── hardware
+│   │   │   ├── hardware_manager.py
+│   │   │   └── __init__.py
+│   │   ├── kernel
+│   │   │   ├── __init__.py
+│   │   │   └── kernel.py
+│   │   ├── logger
+│   │   │   ├── __init__.py
+│   │   │   ├── log_formatter.py
+│   │   │   └── logger.py
+│   │   ├── loop
+│   │   │   ├── event_loop.py
+│   │   │   └── __init__.py
+│   │   ├── managers
+│   │   │   ├── boot_manager.py
+│   │   │   ├── __init__.py
+│   │   │   ├── process_manager.py
+│   │   │   └── task_manager.py
+│   │   ├── memory
+│   │   │   ├── cache.py
+│   │   │   ├── database.py
+│   │   │   ├── __init__.py
+│   │   │   ├── memory_engine.py
+│   │   │   └── session.py
+│   │   ├── overlay
+│   │   │   ├── __init__.py
+│   │   │   └── overlay.py
+│   │   ├── plugins
+│   │   │   ├── __init__.py
+│   │   │   ├── plugin_manager.py
+│   │   │   └── plugin.py
+│   │   ├── runtime
+│   │   │   ├── diagnostics.py
+│   │   │   ├── health_monitor.py
+│   │   │   ├── __init__.py
+│   │   │   └── runtime_manager.py
+│   │   ├── scheduler
+│   │   │   ├── __init__.py
+│   │   │   ├── scheduler.py
+│   │   │   └── task.py
+│   │   ├── state
+│   │   │   ├── engine
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── state_engine.py
+│   │   │   ├── hardware_state.py
+│   │   │   ├── __init__.py
+│   │   │   ├── state_engine.py
+│   │   │   ├── state_manager.py
+│   │   │   └── system_state.py
+│   │   ├── system
+│   │   │   ├── battery.py
+│   │   │   ├── cpu.py
+│   │   │   ├── disk.py
+│   │   │   ├── __init__.py
+│   │   │   ├── network.py
+│   │   │   ├── ram.py
+│   │   │   ├── system_monitor.py
+│   │   │   └── temperature.py
+│   │   ├── tasks
+│   │   │   ├── __init__.py
+│   │   │   ├── task.py
+│   │   │   └── task_queue.py
+│   │   └── voice
+│   │       ├── audio.py
+│   │       ├── __init__.py
+│   │       ├── stt.py
+│   │       ├── tts.py
+│   │       └── wakeword.py
+│   ├── engine
+│   │   ├── ai
+│   │   │   ├── ai_engine.py
+│   │   │   └── __init__.py
+│   │   ├── core
+│   │   │   ├── engine.py
+│   │   │   └── __init__.py
+│   │   ├── __init__.py
+│   │   ├── manager
+│   │   │   ├── engine_manager.py
+│   │   │   └── __init__.py
+│   │   ├── planner
+│   │   │   └── __init__.py
+│   │   ├── reasoning
+│   │   │   └── __init__.py
+│   │   ├── runtime
+│   │   │   ├── __init__.py
+│   │   │   └── runtime_engine.py
+│   │   ├── state
+│   │   │   ├── __init__.py
+│   │   │   └── state_engine.py
+│   │   └── voice
+│   │       ├── __init__.py
+│   │       └── voice_engine.py
+│   ├── events
+│   │   ├── bus
+│   │   │   ├── event_bus.py
+│   │   │   ├── event.py
+│   │   │   ├── event_types.py
+│   │   │   └── __init__.py
+│   │   ├── event_bus.py
+│   │   ├── event.py
+│   │   └── __init__.py
+│   ├── __init__.py
+│   ├── ipc
+│   │   ├── __init__.py
+│   │   ├── message.py
+│   │   └── router.py
+│   ├── modules
+│   │   ├── __init__.py
+│   │   ├── loader
+│   │   │   ├── __init__.py
+│   │   │   └── module_loader.py
+│   │   ├── module_base.py
+│   │   ├── module.py
+│   │   └── sensors
+│   │       ├── battery.py
+│   │       ├── fans.py
+│   │       ├── __init__.py
+│   │       └── temperature.py
+│   ├── services
+│   │   ├── ai
+│   │   ├── core
+│   │   │   ├── service_manager.py
+│   │   │   └── service.py
+│   │   ├── __init__.py
+│   │   ├── network
+│   │   └── system
+│   │       └── hardware_service.py
+│   ├── ui
+│   │   ├── assets
+│   │   │   └── ATHENA_logo.png
+│   │   ├── hud
+│   │   │   ├── athena_hud.py
+│   │   │   └── __init__.py
+│   │   ├── __init__.py
+│   │   ├── main_window.py
+│   │   ├── resources
+│   │   │   └── resources.py
+│   │   ├── splash.py
+│   │   ├── styles
+│   │   │   ├── athena_hud.qss
+│   │   │   └── theme.py
+│   │   ├── theme.py
+│   │   ├── themes
+│   │   │   └── __init__.py
+│   │   ├── widgets
+│   │   │   ├── chat_widget.py
+│   │   │   ├── __init__.py
+│   │   │   ├── music_widget.py
+│   │   │   └── system_widget.py
+│   │   └── windows
+│   │       ├── dashboard.py
+│   │       └── main_window.py
+│   └── utils
+│       ├── files.py
+│       ├── helpers.py
+│       ├── __init__.py
+│       └── system.py
+├── tests
+│   ├── test_bus.py
+│   ├── test_event_loop.py
+│   └── test_tasks.py
+└── version.json
+
+72 directories, 155 files
