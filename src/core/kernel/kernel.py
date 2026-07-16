@@ -1,23 +1,30 @@
-from src.core.cognition.cognitive_engine import CognitiveEngine
 from src.core.logger.logger import AthenaLogger
 
 
-from src.core.registry.registry import AthenaRegistry
-
+# CORE SYSTEMS
 
 from src.core.memory.memory_engine import MemoryEngine
+from src.core.memory.manager.memory_manager import MemoryManager
+
 from src.core.events.event_bus import EventBus
+
 from src.core.scheduler.scheduler import Scheduler
+
 from src.core.system.system_monitor import SystemMonitor
+
 from src.core.hardware.hardware_manager import HardwareManager
+
 from src.core.state.state_manager import StateManager
+
 from src.core.runtime.runtime_manager import RuntimeManager
+
+from src.core.registry.registry import AthenaRegistry
 
 from src.core.loop.event_loop import EventLoop
 
 
-from src.core.telemetry.telemetry_manager import TelemetryManager
 
+# SERVICES
 
 from src.services.core.service_manager import ServiceManager
 from src.services.system.hardware_service import HardwareService
@@ -39,7 +46,35 @@ class AthenaKernel:
         self.registry = AthenaRegistry()
 
 
+        # =========================
+        # CORE COMPONENTS
+        # =========================
+
+
+        self.memory = None
+
+        self.memory_manager = None
+
+        self.events = None
+
+        self.scheduler = None
+
+        self.monitor = None
+
+        self.hardware = None
+
+        self.state = None
+
+        self.runtime = None
+
+        self.services = None
+
+        self.loop = None
+
+
+
         self.booted = False
+
 
 
 
@@ -58,90 +93,173 @@ class AthenaKernel:
 
 
 
-        #
-        # CORE SYSTEMS
-        #
+        # =========================
+        # INITIALIZE SYSTEMS
+        # =========================
 
-        memory = MemoryEngine()
 
-        events = EventBus()
+        self.memory = MemoryEngine()
 
-        scheduler = Scheduler()
 
-        monitor = SystemMonitor()
+        self.memory_manager = MemoryManager()
 
-        hardware = HardwareManager()
 
-        state = StateManager()
 
-        runtime = RuntimeManager()
+        self.events = EventBus()
 
-        loop = EventLoop(
+
+
+        self.scheduler = Scheduler()
+
+
+
+        self.monitor = SystemMonitor()
+
+
+
+        self.hardware = HardwareManager()
+
+
+
+        self.state = StateManager()
+
+
+
+        self.runtime = RuntimeManager()
+
+
+
+        self.services = ServiceManager()
+
+
+
+        self.loop = EventLoop(
             rate=1.0
         )
 
 
-        telemetry = TelemetryManager()
-        cognition = CognitiveEngine()
 
 
-        #
+
+        # =========================
         # SERVICES
-        #
-
-        services = ServiceManager()
+        # =========================
 
 
-        services.register(
+        self.services.register(
+
             HardwareService()
+
         )
 
 
 
-        #
+
+
+        # =========================
         # REGISTRY
-        #
-
-        components = {
+        # =========================
 
 
-            "memory": memory,
+        self.registry.register(
 
-            "events": events,
+            "memory",
 
-            "scheduler": scheduler,
+            self.memory
 
-            "monitor": monitor,
-
-            "hardware": hardware,
-
-            "state": state,
-
-            "runtime": runtime,
-
-            "loop": loop,
-
-            "telemetry": telemetry,
-
-            "cognition": cognition,
-
-            "services": services
-
-        }
+        )
 
 
+        self.registry.register(
 
-        for name, component in components.items():
+            "memory_manager",
 
+            self.memory_manager
 
-            self.registry.register(
-                name,
-                component
-            )
-
+        )
 
 
-        runtime.boot()
+        self.registry.register(
+
+            "events",
+
+            self.events
+
+        )
+
+
+        self.registry.register(
+
+            "scheduler",
+
+            self.scheduler
+
+        )
+
+
+        self.registry.register(
+
+            "monitor",
+
+            self.monitor
+
+        )
+
+
+        self.registry.register(
+
+            "hardware",
+
+            self.hardware
+
+        )
+
+
+        self.registry.register(
+
+            "state",
+
+            self.state
+
+        )
+
+
+        self.registry.register(
+
+            "runtime",
+
+            self.runtime
+
+        )
+
+
+        self.registry.register(
+
+            "services",
+
+            self.services
+
+        )
+
+
+        self.registry.register(
+
+            "loop",
+
+            self.loop
+
+        )
+
+
+
+
+
+        # =========================
+        # START RUNTIME
+        # =========================
+
+
+        self.runtime.boot()
 
 
 
@@ -150,8 +268,13 @@ class AthenaKernel:
 
 
         AthenaLogger.info(
+
             "Kernel ONLINE."
+
         )
+
+
+
 
 
 
@@ -160,72 +283,53 @@ class AthenaKernel:
 
         if not self.booted:
 
+
             self.boot()
 
 
 
-        loop = self.registry.get(
-            "loop"
-        )
-
-
-        loop.start()
+        self.loop.start()
 
 
 
         AthenaLogger.info(
+
             "Kernel LOOP ACTIVE."
+
         )
+
+
+
 
 
 
     def stop(self):
 
 
-        loop = self.registry.get(
-            "loop"
-        )
+        if self.loop:
 
 
-        if loop:
-
-            loop.stop()
-
-
-
-        self.booted = False
+            self.loop.stop()
 
 
 
         AthenaLogger.info(
+
             "Kernel STOPPED."
+
         )
 
 
 
-    def get(
-        self,
-        component
-    ):
+
+
+
+
+    def get(self, component):
 
 
         return self.registry.get(
+
             component
+
         )
-
-
-
-    def status(self):
-
-
-        return {
-
-
-            "booted":
-            self.booted,
-
-
-            "components":
-            self.registry.list()
-
-        }
