@@ -1,0 +1,37 @@
+ATHENA_UI:
+
+  theme: ATHENA-CYBER
+
+  colors:
+
+    background: "#050510"
+    panel: "#09091c"
+
+    cyan: "#00f6ff"
+    blue: "#0077ff"
+    purple: "#9b00ff"
+
+    text:
+      primary: "#e0eaff"
+      secondary: "#8aa0b8"
+
+
+  font:
+
+    family: "Liberation Mono"
+
+    size:
+      normal: 11
+      hud: 14
+      title: 20
+
+
+  effects:
+
+    transparency: true
+
+    glass: true
+
+    glow: true
+
+    animations: true

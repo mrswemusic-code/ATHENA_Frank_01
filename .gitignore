@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Python caches
+.pytest_cache/
+.mypy_cache/
+
+# Logs
+*.log
+runtime/logs/
+
+# Linux
+*~
+.DS_Store
+
+# Build
+dist/
+build/
+
+# Temporary
+*.tmp
+*.bak
+
+# Local configuration
+.env
+
+# Bytecode
+*.egg-info/
+
+# GitHub
+.github/*.secret

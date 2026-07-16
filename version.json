@@ -1,0 +1,10 @@
+{
+    "name":"ATHENA",
+    "edition":"CORE",
+    "version":"0.1.0-alpha",
+    "codename":"Genesis",
+    "author":"Mr.Swe",
+    "engine":"Python 3.12",
+    "ui":"Qt6",
+    "status":"Development"
+}

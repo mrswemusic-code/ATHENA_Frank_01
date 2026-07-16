@@ -1,0 +1,27 @@
+core:
+  enabled: true
+  autostart: true
+
+memory:
+  enabled: true
+  autostart: true
+
+voice:
+  enabled: false
+  autostart: false
+
+overlay:
+  enabled: true
+  autostart: true
+
+widgets:
+  enabled: true
+  autostart: true
+
+agents:
+  enabled: true
+  autostart: true
+
+events:
+  enabled: true
+  autostart: true
