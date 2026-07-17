@@ -1,65 +1,234 @@
 from src.core.logger.logger import AthenaLogger
 
-from src.core.brain.intents.router import IntentRouter
+from src.core.brain.intent_classifier import IntentClassifier
 
-from src.core.brain.planner import Planner
+from src.core.planner.planner import Planner
 
-from src.core.brain.response import ResponseGenerator
+from src.core.brain.context_manager import BrainContextManager
+
 
 
 class AthenaBrain:
 
 
+
     def __init__(
+
         self,
+
         kernel
+
     ):
+
 
         self.kernel = kernel
 
-        self.router = IntentRouter()
+
+        self.classifier = IntentClassifier()
+
 
         self.planner = Planner()
 
-        self.response = ResponseGenerator()
+
+        self.context = BrainContextManager()
+
+
+
+        self.state = {
+
+
+            "state": "IDLE",
+
+            "intent": None,
+
+            "language": "es",
+
+            "history": []
+
+        }
+
 
 
         AthenaLogger.info(
+
             "ATHENA Brain initialized."
+
         )
+
 
 
     def think(
+
         self,
+
         text
+
     ):
 
-        intent = self.router.detect(text)
 
-        plan = self.planner.create_plan(
-            intent
+
+        AthenaLogger.info(
+
+            f"[BRAIN] Input -> {text}"
+
         )
 
 
-        if plan["intent"] == "status":
 
-            result = self.kernel.get(
-                "command_bus"
-            ).dispatch(
-                "status"
+        intent = self.classifier.classify(
+
+            text
+
+        )
+
+
+
+        AthenaLogger.info(
+
+            f"[BRAIN] Intent -> {intent.name}"
+
+        )
+
+
+
+        language = "es"
+
+
+
+        if hasattr(
+
+            intent,
+
+            "payload"
+
+        ):
+
+
+            language = intent.payload.get(
+
+                "language",
+
+                "es"
+
             )
 
-        else:
 
-            result = {
 
-                "message":
+        self.state["intent"] = intent.name
 
-                "Command not implemented."
+
+        self.state["language"] = language
+
+
+
+        self.context.update(
+
+            text,
+
+            intent.name,
+
+            language
+
+        )
+
+
+
+        plan = self.planner.create_plan(
+
+            intent.name
+
+        )
+
+
+
+        AthenaLogger.info(
+
+            f"[BRAIN] Plan -> {plan.name}"
+
+        )
+
+
+
+        execution = self.kernel.get(
+
+            "execution"
+
+        )
+
+
+        result = execution.execute_plan(
+
+            plan
+
+        )
+
+
+
+        response_engine = self.kernel.get(
+
+            "response"
+
+        )
+
+
+        response = response_engine.generate(
+
+            result
+
+        )
+
+
+
+        self.state["history"].append(
+
+            {
+
+                "input":
+
+                    text,
+
+
+                "intent":
+
+                    intent.name,
+
+
+                "language":
+
+                    language,
+
+
+                "response":
+
+                    response
 
             }
 
-
-        return self.response.create(
-            result
         )
+
+
+
+        self.state["state"] = "READY"
+
+
+
+        return response
+
+
+
+    def snapshot(self):
+
+
+        return {
+
+
+            "state":
+
+                self.state,
+
+
+            "context":
+
+                self.context.snapshot()
+
+        }

@@ -6,6 +6,6 @@ class Intent:
 
     name: str
 
-    confidence: float
+    confidence: float = 1.0
 
-    payload: dict
+    payload: dict | None = None

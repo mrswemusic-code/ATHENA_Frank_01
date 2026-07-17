@@ -2,7 +2,7 @@ import threading
 import time
 
 from src.core.logger.logger import AthenaLogger
-from src.core.tasks.task_queue import TaskQueue
+from src.core.planner.task_queue import TaskQueue
 
 
 

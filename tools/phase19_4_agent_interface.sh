@@ -1,3 +1,9 @@
+#!/bin/bash
+
+set -e
+
+
+cat > src/core/agents/base_agent.py << 'PY'
 
 
 from src.core.logger.logger import AthenaLogger
@@ -77,4 +83,9 @@ class BaseAgent:
                 self.capabilities()
 
         }
+
+PY
+
+
+echo "Base Agent Interface installed."
 

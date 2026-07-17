@@ -1,4 +1,13 @@
 {
     "creator": "Mr.Swe",
-    "project": "ATHENA AI OS"
+    "project": "ATHENA AI OS",
+    "browser": {
+        "id": "967cd568-648f-4174-9afb-76681f954fa9",
+        "key": "browser",
+        "value": "Brave",
+        "category": "preference",
+        "language": "es",
+        "confidence": 1.0,
+        "created_at": "2026-07-17 00:55:56"
+    }
 }
