@@ -1,0 +1,68 @@
+from src.core.logger.logger import AthenaLogger
+
+from src.core.response.language_formatter import LanguageFormatter
+from src.core.response.personality import AthenaPersonality
+
+
+
+class ResponseEngine:
+
+
+    def __init__(self):
+
+        self.formatter = LanguageFormatter()
+
+        self.personality = AthenaPersonality()
+
+
+        AthenaLogger.info(
+            "Response Engine initialized."
+        )
+
+
+
+    def generate(
+        self,
+        execution_result
+    ):
+
+
+        if not execution_result:
+
+            return "ATHENA: No result available."
+
+
+
+        first_result = execution_result[0]
+
+
+        data = first_result.get(
+            "result",
+            {}
+        )
+
+
+        language = "es"
+
+
+
+        if "cpu" in data:
+
+
+            response = self.formatter.format_system_status(
+                data,
+                language
+            )
+
+
+            return self.personality.wrap(
+                response,
+                language
+            )
+
+
+
+        return self.personality.wrap(
+            str(execution_result),
+            language
+        )

@@ -1,13 +1,258 @@
 {
-    "creator": "Mr.Swe",
-    "project": "ATHENA AI OS",
+    "creator": {
+        "id": "bf46b01e-4e57-42dc-95b1-15e83fdf3233",
+        "key": "creator",
+        "value": "Mr.Swe",
+        "category": "general",
+        "language": "es",
+        "confidence": 1.0,
+        "created_at": "2026-07-19 01:47:13"
+    },
+    "project": {
+        "id": "9f0318ed-ef76-4b22-bfa0-ac364b1e5dbd",
+        "key": "project",
+        "value": "ATHENA AI OS",
+        "category": "general",
+        "language": "es",
+        "confidence": 1.0,
+        "created_at": "2026-07-19 01:47:13"
+    },
     "browser": {
-        "id": "967cd568-648f-4174-9afb-76681f954fa9",
+        "id": "b86571f4-b212-4094-836b-4a64a54fce14",
         "key": "browser",
         "value": "Brave",
         "category": "preference",
         "language": "es",
         "confidence": 1.0,
-        "created_at": "2026-07-17 00:55:56"
+        "created_at": "2026-07-19 01:47:13"
+    },
+    "conversation_0": {
+        "id": "c0b0b1ac-b988-4b60-b447-7d72141b4def",
+        "key": "conversation_0",
+        "value": {
+            "input": "estado",
+            "intent": "system",
+            "reasoning": {
+                "reasoning": {
+                    "intent": "system",
+                    "confidence": 1.0,
+                    "risk": "LOW",
+                    "recommended_action": "system",
+                    "context": {
+                        "input": "estado",
+                        "language": "es"
+                    }
+                },
+                "decision": {
+                    "execute": true,
+                    "action": "system",
+                    "confidence": 1.0
+                }
+            },
+            "response": "ATHENA:\n\nEstado del sistema actualizado.\n\nCPU: 29.1%\nMemoria RAM: 30.3%\nDisco utilizado: 2.0%\nTemperatura: 94.0\u00b0C",
+            "context": {
+                "user_intent": null,
+                "language": "es",
+                "priority": "normal",
+                "mode": "assistant",
+                "confidence": 1.0,
+                "metadata": {
+                    "input": "estado",
+                    "source": "brain",
+                    "engine": "response",
+                    "type": "system_report",
+                    "format": "report"
+                }
+            }
+        },
+        "category": "conversation",
+        "language": "es",
+        "confidence": 1.0,
+        "created_at": "2026-07-19 01:47:14"
+    },
+    "usuario": {
+        "id": "0aecc8b8-d8c0-4426-b08d-c663cc7720f8",
+        "key": "usuario",
+        "value": "Francesco",
+        "category": "profile",
+        "language": "es",
+        "confidence": 1.0,
+        "created_at": "2026-07-19 01:47:14"
+    },
+    "conversation_1": {
+        "id": "6040f8fe-e119-4e58-b375-2c08618744bd",
+        "key": "conversation_1",
+        "value": {
+            "input": "estado",
+            "intent": "system",
+            "reasoning": {
+                "reasoning": {
+                    "intent": "system",
+                    "confidence": 1.0,
+                    "risk": "LOW",
+                    "recommended_action": "system",
+                    "context": {
+                        "input": "estado",
+                        "language": "es"
+                    }
+                },
+                "decision": {
+                    "execute": true,
+                    "action": "system",
+                    "confidence": 1.0
+                }
+            },
+            "response": "ATHENA:\n\nEstado del sistema actualizado.\n\nCPU: 60.0%\nMemoria RAM: 30.4%\nDisco utilizado: 2.0%\nTemperatura: 98.0\u00b0C",
+            "context": {
+                "user_intent": null,
+                "language": "es",
+                "priority": "normal",
+                "mode": "assistant",
+                "confidence": 1.0,
+                "metadata": {
+                    "input": "hola",
+                    "source": "brain",
+                    "engine": "response",
+                    "type": "normal",
+                    "format": "text"
+                }
+            }
+        },
+        "category": "conversation",
+        "language": "es",
+        "confidence": 1.0,
+        "created_at": "2026-07-19 01:47:03"
+    },
+    "conversation_2": {
+        "id": "8848f3ef-9d84-4d57-9a89-b9d00d475a7c",
+        "key": "conversation_2",
+        "value": {
+            "input": "c\u00f3mo est\u00e1 el sistema",
+            "intent": "unknown",
+            "reasoning": {
+                "reasoning": {
+                    "intent": "unknown",
+                    "confidence": 1.0,
+                    "risk": "LOW",
+                    "recommended_action": "unknown",
+                    "context": {
+                        "input": "c\u00f3mo est\u00e1 el sistema",
+                        "language": "es"
+                    }
+                },
+                "decision": {
+                    "execute": true,
+                    "action": "unknown",
+                    "confidence": 1.0
+                }
+            },
+            "response": "ATHENA:\n\nEstado del sistema actualizado.\n\nCPU: 66.7%\nMemoria RAM: 30.4%\nDisco utilizado: 2.0%\nTemperatura: 98.0\u00b0C",
+            "context": {
+                "user_intent": null,
+                "language": "es",
+                "priority": "normal",
+                "mode": "assistant",
+                "confidence": 1.0,
+                "metadata": {
+                    "input": "hola",
+                    "source": "brain",
+                    "engine": "response",
+                    "type": "normal",
+                    "format": "text"
+                }
+            }
+        },
+        "category": "conversation",
+        "language": "es",
+        "confidence": 1.0,
+        "created_at": "2026-07-19 01:47:03"
+    },
+    "conversation_3": {
+        "id": "ee9b9bd3-e6d9-46b1-9a78-bf29d87ebeba",
+        "key": "conversation_3",
+        "value": {
+            "input": "system",
+            "intent": "unknown",
+            "reasoning": {
+                "reasoning": {
+                    "intent": "unknown",
+                    "confidence": 1.0,
+                    "risk": "LOW",
+                    "recommended_action": "unknown",
+                    "context": {
+                        "input": "system",
+                        "language": "es"
+                    }
+                },
+                "decision": {
+                    "execute": true,
+                    "action": "unknown",
+                    "confidence": 1.0
+                }
+            },
+            "response": "ATHENA:\n\nEstado del sistema actualizado.\n\nCPU: 57.1%\nMemoria RAM: 30.4%\nDisco utilizado: 2.0%\nTemperatura: 98.0\u00b0C",
+            "context": {
+                "user_intent": null,
+                "language": "es",
+                "priority": "normal",
+                "mode": "assistant",
+                "confidence": 1.0,
+                "metadata": {
+                    "input": "hola",
+                    "source": "brain",
+                    "engine": "response",
+                    "type": "normal",
+                    "format": "text"
+                }
+            }
+        },
+        "category": "conversation",
+        "language": "es",
+        "confidence": 1.0,
+        "created_at": "2026-07-19 01:47:03"
+    },
+    "conversation_4": {
+        "id": "4ba63c2f-be01-4f9b-a322-944a719a2b6a",
+        "key": "conversation_4",
+        "value": {
+            "input": "hola",
+            "intent": "unknown",
+            "reasoning": {
+                "reasoning": {
+                    "intent": "unknown",
+                    "confidence": 1.0,
+                    "risk": "LOW",
+                    "recommended_action": "unknown",
+                    "context": {
+                        "input": "hola",
+                        "language": "es"
+                    }
+                },
+                "decision": {
+                    "execute": true,
+                    "action": "unknown",
+                    "confidence": 1.0
+                }
+            },
+            "response": "ATHENA:\n\nEstado del sistema actualizado.\n\nCPU: 50.0%\nMemoria RAM: 30.4%\nDisco utilizado: 2.0%\nTemperatura: 98.0\u00b0C",
+            "context": {
+                "user_intent": null,
+                "language": "es",
+                "priority": "normal",
+                "mode": "assistant",
+                "confidence": 1.0,
+                "metadata": {
+                    "input": "hola",
+                    "source": "brain",
+                    "engine": "response",
+                    "type": "normal",
+                    "format": "text"
+                }
+            }
+        },
+        "category": "conversation",
+        "language": "es",
+        "confidence": 1.0,
+        "created_at": "2026-07-19 01:47:03"
     }
 }

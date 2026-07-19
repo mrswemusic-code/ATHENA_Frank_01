@@ -1,0 +1,19 @@
+agent: system
+
+description: >
+  ATHENA system control agent.
+
+capabilities:
+
+  - status
+  - hardware
+  - files
+  - applications
+  - terminal
+
+commands:
+
+  - status
+
+priority: 10
+enabled: true

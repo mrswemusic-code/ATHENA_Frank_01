@@ -1,0 +1,544 @@
+src
+├── api
+│   ├── __init__.py
+│   └── __pycache__
+│       └── __init__.cpython-312.pyc
+├── capabilities
+│   └── system.yaml
+├── config
+│   ├── constants.py
+│   ├── __init__.py
+│   ├── logger.py
+│   ├── manager
+│   │   ├── config_manager.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── config_manager.cpython-312.pyc
+│   │       └── __init__.cpython-312.pyc
+│   ├── __pycache__
+│   │   ├── constants.cpython-312.pyc
+│   │   ├── __init__.cpython-312.pyc
+│   │   ├── logger.cpython-312.pyc
+│   │   ├── settings.cpython-312.pyc
+│   │   └── ui_config.cpython-312.pyc
+│   ├── settings.py
+│   └── ui_config.py
+├── core
+│   ├── agents
+│   │   ├── agent_factory.py
+│   │   ├── agent_manager.py
+│   │   ├── agent.py
+│   │   ├── agent_registry.py
+│   │   ├── agent_runtime.py
+│   │   ├── base_agent.py
+│   │   ├── coding_agent.py
+│   │   ├── core
+│   │   │   ├── agent_context.py
+│   │   │   ├── agent_result.py
+│   │   │   ├── capability.py
+│   │   │   ├── __init__.py
+│   │   │   └── __pycache__
+│   │   ├── __init__.py
+│   │   ├── internet_agent.py
+│   │   ├── memory_agent.py
+│   │   ├── music_agent.py
+│   │   ├── __pycache__
+│   │   │   ├── agent.cpython-312.pyc
+│   │   │   ├── agent_factory.cpython-312.pyc
+│   │   │   ├── agent_manager.cpython-312.pyc
+│   │   │   ├── agent_registry.cpython-312.pyc
+│   │   │   ├── agent_runtime.cpython-312.pyc
+│   │   │   ├── base_agent.cpython-312.pyc
+│   │   │   ├── coding_agent.cpython-312.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── internet_agent.cpython-312.pyc
+│   │   │   ├── memory_agent.cpython-312.pyc
+│   │   │   ├── music_agent.cpython-312.pyc
+│   │   │   ├── system_agent.cpython-312.pyc
+│   │   │   ├── vision_agent.cpython-312.pyc
+│   │   │   └── voice_agent.cpython-312.pyc
+│   │   ├── system_agent.py
+│   │   ├── vision_agent.py
+│   │   └── voice_agent.py
+│   ├── application.py
+│   ├── boot.py
+│   ├── brain
+│   │   ├── brain.py
+│   │   ├── context_manager.py
+│   │   ├── context.py
+│   │   ├── __init__.py
+│   │   ├── intent_classifier.py
+│   │   ├── intent.py
+│   │   ├── intents
+│   │   │   ├── __init__.py
+│   │   │   ├── __pycache__
+│   │   │   ├── router.py
+│   │   │   └── status.py
+│   │   ├── planner.py
+│   │   ├── __pycache__
+│   │   │   ├── brain.cpython-312.pyc
+│   │   │   ├── context.cpython-312.pyc
+│   │   │   ├── context_manager.cpython-312.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── intent_classifier.cpython-312.pyc
+│   │   │   ├── intent.cpython-312.pyc
+│   │   │   ├── planner.cpython-312.pyc
+│   │   │   └── response.cpython-312.pyc
+│   │   └── response.py
+│   ├── bus
+│   │   ├── bus.py
+│   │   ├── __init__.py
+│   │   ├── message.py
+│   │   └── __pycache__
+│   │       ├── bus.cpython-312.pyc
+│   │       ├── __init__.cpython-312.pyc
+│   │       └── message.cpython-312.pyc
+│   ├── cognition
+│   │   ├── attention_manager.py
+│   │   ├── cognition_engine.py
+│   │   ├── decision_engine.py
+│   │   ├── goal_manager.py
+│   │   ├── __init__.py
+│   │   ├── objective.py
+│   │   ├── priority_engine.py
+│   │   ├── __pycache__
+│   │   │   ├── attention_manager.cpython-312.pyc
+│   │   │   ├── cognition_engine.cpython-312.pyc
+│   │   │   ├── decision_engine.cpython-312.pyc
+│   │   │   ├── goal_manager.cpython-312.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── objective.cpython-312.pyc
+│   │   │   ├── priority_engine.cpython-312.pyc
+│   │   │   └── reasoning_engine.cpython-312.pyc
+│   │   └── reasoning_engine.py
+│   ├── commands
+│   │   ├── bus
+│   │   │   ├── command_bus.py
+│   │   │   ├── __init__.py
+│   │   │   └── __pycache__
+│   │   ├── command_loader.py
+│   │   ├── command_manager.py
+│   │   ├── command.py
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── command.cpython-312.pyc
+│   │   │   ├── command_loader.cpython-312.pyc
+│   │   │   ├── command_manager.cpython-312.pyc
+│   │   │   └── __init__.cpython-312.pyc
+│   │   └── system
+│   │       ├── diagnostics.py
+│   │       ├── health.py
+│   │       ├── __init__.py
+│   │       ├── __pycache__
+│   │       ├── runtime.py
+│   │       └── status.py
+│   ├── config
+│   │   ├── config_manager.py
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── config_manager.cpython-312.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   └── settings.cpython-312.pyc
+│   │   └── settings.py
+│   ├── context
+│   │   ├── cognitive_state.py
+│   │   ├── context_engine.py
+│   │   ├── context.py
+│   │   ├── context_router.py
+│   │   ├── conversation.py
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── cognitive_state.cpython-312.pyc
+│   │   │   ├── context.cpython-312.pyc
+│   │   │   ├── context_engine.cpython-312.pyc
+│   │   │   ├── context_router.cpython-312.pyc
+│   │   │   ├── conversation.cpython-312.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   └── working_memory.cpython-312.pyc
+│   │   └── working_memory.py
+│   ├── engine.py
+│   ├── events
+│   │   ├── event_bus.py
+│   │   ├── event.py
+│   │   ├── event_types.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── event_bus.cpython-312.pyc
+│   │       ├── event.cpython-312.pyc
+│   │       ├── event_types.cpython-312.pyc
+│   │       └── __init__.cpython-312.pyc
+│   ├── execution
+│   │   ├── execution_context.py
+│   │   ├── execution_engine.py
+│   │   ├── execution_result.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── execution_context.cpython-312.pyc
+│   │       ├── execution_engine.cpython-312.pyc
+│   │       ├── execution_result.cpython-312.pyc
+│   │       └── __init__.cpython-312.pyc
+│   ├── executive
+│   │   ├── executive_loop.py
+│   │   └── __pycache__
+│   │       └── executive_loop.cpython-312.pyc
+│   ├── hardware
+│   │   ├── hardware_manager.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── hardware_manager.cpython-312.pyc
+│   │       └── __init__.cpython-312.pyc
+│   ├── identity
+│   │   ├── identity_manager.py
+│   │   ├── identity.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── identity.cpython-312.pyc
+│   │       ├── identity_manager.cpython-312.pyc
+│   │       └── __init__.cpython-312.pyc
+│   ├── kernel
+│   │   ├── __init__.py
+│   │   ├── kernel.py
+│   │   └── __pycache__
+│   │       ├── __init__.cpython-312.pyc
+│   │       └── kernel.cpython-312.pyc
+│   ├── language
+│   │   ├── __init__.py
+│   │   ├── language_context.py
+│   │   ├── language_detector.py
+│   │   ├── language_engine.py
+│   │   ├── language_manager.py
+│   │   ├── locale_manager.py
+│   │   ├── personality.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── language_context.cpython-312.pyc
+│   │   │   ├── language_detector.cpython-312.pyc
+│   │   │   ├── language_engine.cpython-312.pyc
+│   │   │   ├── language_manager.cpython-312.pyc
+│   │   │   ├── locale_manager.cpython-312.pyc
+│   │   │   ├── personality.cpython-312.pyc
+│   │   │   └── templates.cpython-312.pyc
+│   │   └── templates.py
+│   ├── logger
+│   │   ├── __init__.py
+│   │   ├── log_formatter.py
+│   │   ├── logger.py
+│   │   └── __pycache__
+│   │       ├── __init__.cpython-312.pyc
+│   │       ├── log_formatter.cpython-312.pyc
+│   │       └── logger.cpython-312.pyc
+│   ├── loop
+│   │   ├── event_loop.py
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── event_loop.cpython-312.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   └── tick.cpython-312.pyc
+│   │   └── tick.py
+│   ├── managers
+│   │   ├── boot_manager.py
+│   │   ├── __init__.py
+│   │   ├── process_manager.py
+│   │   ├── __pycache__
+│   │   │   ├── boot_manager.cpython-312.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── process_manager.cpython-312.pyc
+│   │   │   └── task_manager.cpython-312.pyc
+│   │   └── task_manager.py
+│   ├── memory
+│   │   ├── cache.py
+│   │   ├── database.py
+│   │   ├── __init__.py
+│   │   ├── manager
+│   │   │   ├── __init__.py
+│   │   │   ├── memory_manager.py
+│   │   │   └── __pycache__
+│   │   ├── memory_engine.py
+│   │   ├── memory_record.py
+│   │   ├── __pycache__
+│   │   │   ├── cache.cpython-312.pyc
+│   │   │   ├── database.cpython-312.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── memory_engine.cpython-312.pyc
+│   │   │   ├── memory_record.cpython-312.pyc
+│   │   │   └── session.cpython-312.pyc
+│   │   └── session.py
+│   ├── overlay
+│   │   ├── __init__.py
+│   │   ├── overlay.py
+│   │   └── __pycache__
+│   │       ├── __init__.cpython-312.pyc
+│   │       └── overlay.cpython-312.pyc
+│   ├── planner
+│   │   ├── __init__.py
+│   │   ├── planner.py
+│   │   ├── plan.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── plan.cpython-312.pyc
+│   │   │   ├── planner.cpython-312.pyc
+│   │   │   ├── task.cpython-312.pyc
+│   │   │   └── task_queue.cpython-312.pyc
+│   │   ├── task.py
+│   │   └── task_queue.py
+│   ├── plugins
+│   │   ├── __init__.py
+│   │   ├── plugin_manager.py
+│   │   ├── plugin.py
+│   │   └── __pycache__
+│   │       ├── __init__.cpython-312.pyc
+│   │       ├── plugin.cpython-312.pyc
+│   │       └── plugin_manager.cpython-312.pyc
+│   ├── __pycache__
+│   │   ├── application.cpython-312.pyc
+│   │   ├── boot.cpython-312.pyc
+│   │   └── engine.cpython-312.pyc
+│   ├── registry
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   └── registry.cpython-312.pyc
+│   │   └── registry.py
+│   ├── response
+│   │   ├── confidence.py
+│   │   ├── context.py
+│   │   ├── __init__.py
+│   │   ├── language_formatter.py
+│   │   ├── personality.py
+│   │   ├── __pycache__
+│   │   │   ├── confidence.cpython-312.pyc
+│   │   │   ├── context.cpython-312.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── language_formatter.cpython-312.pyc
+│   │   │   ├── personality.cpython-312.pyc
+│   │   │   ├── response_analyzer.cpython-312.pyc
+│   │   │   ├── response_context.cpython-312.pyc
+│   │   │   ├── response_engine.cpython-312.pyc
+│   │   │   ├── response_style.cpython-312.pyc
+│   │   │   └── response_templates.cpython-312.pyc
+│   │   ├── response_analyzer.py
+│   │   ├── response_context.py
+│   │   ├── response_engine.py
+│   │   ├── response_engine.py.backup_v1
+│   │   ├── response_style.py
+│   │   └── response_templates.py
+│   ├── router
+│   │   ├── capability_loader.py
+│   │   ├── capability_matrix.py
+│   │   ├── executive_router.py
+│   │   ├── __init__.py
+│   │   ├── intent_normalizer.py
+│   │   └── __pycache__
+│   │       ├── capability_loader.cpython-312.pyc
+│   │       ├── capability_matrix.cpython-312.pyc
+│   │       ├── executive_router.cpython-312.pyc
+│   │       ├── __init__.cpython-312.pyc
+│   │       └── intent_normalizer.cpython-312.pyc
+│   ├── runtime
+│   │   ├── diagnostics.py
+│   │   ├── health_monitor.py
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── diagnostics.cpython-312.pyc
+│   │   │   ├── health_monitor.cpython-312.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   └── runtime_manager.cpython-312.pyc
+│   │   └── runtime_manager.py
+│   ├── scheduler
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── scheduler.cpython-312.pyc
+│   │   │   └── task.cpython-312.pyc
+│   │   ├── scheduler.py
+│   │   └── task.py
+│   ├── shell
+│   │   ├── athena_shell.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── athena_shell.cpython-312.pyc
+│   │       └── __init__.cpython-312.pyc
+│   ├── state
+│   │   ├── engine
+│   │   │   ├── __init__.py
+│   │   │   ├── __pycache__
+│   │   │   └── state_engine.py
+│   │   ├── hardware_state.py
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── hardware_state.cpython-312.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── state_manager.cpython-312.pyc
+│   │   │   └── system_state.cpython-312.pyc
+│   │   ├── state_manager.py
+│   │   └── system_state.py
+│   ├── system
+│   │   ├── battery.py
+│   │   ├── cpu.py
+│   │   ├── disk.py
+│   │   ├── __init__.py
+│   │   ├── network.py
+│   │   ├── __pycache__
+│   │   │   ├── battery.cpython-312.pyc
+│   │   │   ├── cpu.cpython-312.pyc
+│   │   │   ├── disk.cpython-312.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── network.cpython-312.pyc
+│   │   │   ├── ram.cpython-312.pyc
+│   │   │   ├── system_monitor.cpython-312.pyc
+│   │   │   └── temperature.cpython-312.pyc
+│   │   ├── ram.py
+│   │   ├── system_monitor.py
+│   │   └── temperature.py
+│   ├── task_manager
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── task.cpython-312.pyc
+│   │   │   ├── task_manager.cpython-312.pyc
+│   │   │   ├── task_queue.cpython-312.pyc
+│   │   │   ├── task_result.cpython-312.pyc
+│   │   │   └── task_state.cpython-312.pyc
+│   │   ├── task_manager.py
+│   │   ├── task.py
+│   │   ├── task_queue.py
+│   │   ├── task_result.py
+│   │   └── task_state.py
+│   ├── telemetry
+│   │   ├── event_detector.py
+│   │   ├── __init__.py
+│   │   ├── metrics.py
+│   │   ├── __pycache__
+│   │   │   ├── event_detector.cpython-312.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── metrics.cpython-312.pyc
+│   │   │   ├── service.cpython-312.pyc
+│   │   │   ├── telemetry.cpython-312.pyc
+│   │   │   ├── telemetry_events.cpython-312.pyc
+│   │   │   └── telemetry_manager.cpython-312.pyc
+│   │   ├── service.py
+│   │   ├── telemetry_events.py
+│   │   ├── telemetry_manager.py
+│   │   └── telemetry.py
+│   └── voice
+│       ├── audio.py
+│       ├── __init__.py
+│       ├── interrupt_handler.py
+│       ├── __pycache__
+│       │   ├── audio.cpython-312.pyc
+│       │   ├── __init__.cpython-312.pyc
+│       │   ├── interrupt_handler.cpython-312.pyc
+│       │   ├── stt.cpython-312.pyc
+│       │   ├── tts.cpython-312.pyc
+│       │   └── wakeword.cpython-312.pyc
+│       ├── stt.py
+│       ├── tts.py
+│       └── wakeword.py
+├── __init__.py
+├── ipc
+│   ├── __init__.py
+│   ├── message.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-312.pyc
+│   │   ├── message.cpython-312.pyc
+│   │   └── router.cpython-312.pyc
+│   └── router.py
+├── modules
+│   ├── __init__.py
+│   ├── loader
+│   │   ├── __init__.py
+│   │   ├── module_loader.py
+│   │   └── __pycache__
+│   │       ├── __init__.cpython-312.pyc
+│   │       └── module_loader.cpython-312.pyc
+│   ├── module_base.py
+│   ├── module.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-312.pyc
+│   │   ├── module_base.cpython-312.pyc
+│   │   └── module.cpython-312.pyc
+│   └── sensors
+│       ├── battery.py
+│       ├── fans.py
+│       ├── __init__.py
+│       ├── __pycache__
+│       │   ├── battery.cpython-312.pyc
+│       │   ├── fans.cpython-312.pyc
+│       │   ├── __init__.cpython-312.pyc
+│       │   └── temperature.cpython-312.pyc
+│       └── temperature.py
+├── __pycache__
+│   └── __init__.cpython-312.pyc
+├── services
+│   ├── core
+│   │   ├── __pycache__
+│   │   │   ├── service.cpython-312.pyc
+│   │   │   └── service_manager.cpython-312.pyc
+│   │   ├── service_manager.py
+│   │   └── service.py
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   └── __init__.cpython-312.pyc
+│   └── system
+│       ├── hardware_service.py
+│       └── __pycache__
+│           └── hardware_service.cpython-312.pyc
+├── ui
+│   ├── assets
+│   │   └── ATHENA_logo.png
+│   ├── hud
+│   │   ├── athena_hud.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── athena_hud.cpython-312.pyc
+│   │       └── __init__.cpython-312.pyc
+│   ├── __init__.py
+│   ├── main_window.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-312.pyc
+│   │   ├── main_window.cpython-312.pyc
+│   │   ├── splash.cpython-312.pyc
+│   │   └── theme.cpython-312.pyc
+│   ├── resources
+│   │   ├── __pycache__
+│   │   │   └── resources.cpython-312.pyc
+│   │   └── resources.py
+│   ├── splash.py
+│   ├── styles
+│   │   ├── athena_hud.qss
+│   │   ├── __pycache__
+│   │   │   └── theme.cpython-312.pyc
+│   │   └── theme.py
+│   ├── theme.py
+│   ├── themes
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       └── __init__.cpython-312.pyc
+│   ├── widgets
+│   │   ├── chat_widget.py
+│   │   ├── __init__.py
+│   │   ├── music_widget.py
+│   │   ├── __pycache__
+│   │   │   ├── chat_widget.cpython-312.pyc
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── music_widget.cpython-312.pyc
+│   │   │   └── system_widget.cpython-312.pyc
+│   │   └── system_widget.py
+│   └── windows
+│       ├── dashboard.py
+│       ├── main_window.py
+│       └── __pycache__
+│           ├── dashboard.cpython-312.pyc
+│           └── main_window.cpython-312.pyc
+└── utils
+    ├── files.py
+    ├── helpers.py
+    ├── __init__.py
+    ├── __pycache__
+    │   ├── files.cpython-312.pyc
+    │   ├── helpers.cpython-312.pyc
+    │   ├── __init__.cpython-312.pyc
+    │   └── system.cpython-312.pyc
+    └── system.py
+
+118 directories, 424 files

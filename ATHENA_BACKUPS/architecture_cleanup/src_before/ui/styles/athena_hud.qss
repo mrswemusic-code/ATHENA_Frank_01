@@ -1,0 +1,24 @@
+QWidget {
+
+background-color: rgba(5,10,20,180);
+border: 1px solid rgba(0,255,255,140);
+border-radius: 18px;
+
+}
+
+
+QLabel#title {
+
+color:#00ffff;
+font-size:16px;
+font-weight:bold;
+
+}
+
+
+QLabel#stats {
+
+color:#d8ffff;
+font-size:12px;
+
+}
