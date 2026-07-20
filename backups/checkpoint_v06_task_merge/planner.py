@@ -1,10 +1,12 @@
 from src.core.logger.logger import AthenaLogger
 
 from src.core.planner.plan import Plan
-from src.core.tasks.task import Task
+from src.core.planner.task import Task
+
 
 
 class Planner:
+
 
 
     def __init__(self):
@@ -14,20 +16,25 @@ class Planner:
         )
 
 
+
     def create_plan(
         self,
         intent,
         payload=None
     ):
 
-        payload = payload or {}
 
         plan = Plan(
             intent
         )
 
 
+        payload = payload or {}
+
+
+
         if intent == "system":
+
 
             plan.add(
 
@@ -37,8 +44,6 @@ class Planner:
 
                     action="status",
 
-                    agent="system",
-
                     payload=payload
 
                 )
@@ -46,14 +51,19 @@ class Planner:
             )
 
 
+
         elif intent == "memory":
+
+
 
             operation = payload.get(
                 "operation"
             )
 
 
+
             if operation == "remember":
+
 
                 plan.add(
 
@@ -62,8 +72,6 @@ class Planner:
                         name="Store Memory",
 
                         action="remember",
-
-                        agent="memory",
 
                         payload={
 
@@ -83,7 +91,9 @@ class Planner:
                 )
 
 
+
             elif operation == "recall":
+
 
                 plan.add(
 
@@ -92,8 +102,6 @@ class Planner:
                         name="Recall Memory",
 
                         action="recall",
-
-                        agent="memory",
 
                         payload={
 
@@ -110,7 +118,9 @@ class Planner:
                 )
 
 
+
             else:
+
 
                 plan.add(
 
@@ -120,8 +130,6 @@ class Planner:
 
                         action="memory",
 
-                        agent="memory",
-
                         payload=payload
 
                     )
@@ -129,7 +137,9 @@ class Planner:
                 )
 
 
+
         elif intent == "music":
+
 
             plan.add(
 
@@ -139,8 +149,6 @@ class Planner:
 
                     action="music",
 
-                    agent="music",
-
                     payload=payload
 
                 )
@@ -148,7 +156,9 @@ class Planner:
             )
 
 
+
         elif intent == "internet":
+
 
             plan.add(
 
@@ -158,8 +168,6 @@ class Planner:
 
                     action="search",
 
-                    agent="internet",
-
                     payload=payload
 
                 )
@@ -167,7 +175,9 @@ class Planner:
             )
 
 
+
         elif intent == "coding":
+
 
             plan.add(
 
@@ -177,8 +187,6 @@ class Planner:
 
                     action="coding",
 
-                    agent="coding",
-
                     payload=payload
 
                 )
@@ -186,7 +194,9 @@ class Planner:
             )
 
 
+
         elif intent == "voice":
+
 
             plan.add(
 
@@ -196,8 +206,6 @@ class Planner:
 
                     action="voice",
 
-                    agent="voice",
-
                     payload=payload
 
                 )
@@ -205,7 +213,9 @@ class Planner:
             )
 
 
+
         elif intent == "vision":
+
 
             plan.add(
 
@@ -215,8 +225,6 @@ class Planner:
 
                     action="vision",
 
-                    agent="vision",
-
                     payload=payload
 
                 )
@@ -224,7 +232,9 @@ class Planner:
             )
 
 
+
         else:
+
 
             plan.add(
 
@@ -239,6 +249,7 @@ class Planner:
                 )
 
             )
+
 
 
         AthenaLogger.info(

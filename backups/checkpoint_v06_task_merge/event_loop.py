@@ -1,5 +1,5 @@
 from src.core.logger.logger import AthenaLogger
-from src.core.task_manager.task_queue import TaskQueue
+from src.core.planner.task_queue import TaskQueue
 
 import threading
 import time
@@ -9,11 +9,7 @@ import traceback
 class EventLoop:
 
 
-    def __init__(
-        self,
-        kernel=None,
-        rate=1.0
-    ):
+    def __init__(self, kernel=None, rate=1.0):
 
         self.kernel = kernel
 
@@ -32,21 +28,18 @@ class EventLoop:
         self.state = "IDLE"
 
 
+
         AthenaLogger.info(
             "[LOOP] Event Loop initialized."
         )
 
 
 
-    def register(
-        self,
-        callback
-    ):
+    def register(self, callback):
 
         self.callbacks.append(
             callback
         )
-
 
         AthenaLogger.info(
             "[LOOP] Callback registered"
@@ -54,15 +47,11 @@ class EventLoop:
 
 
 
-    def add_task(
-        self,
-        task
-    ):
+    def add_task(self, task):
 
-        self.tasks.push(
+        self.tasks.add(
             task
         )
-
 
         AthenaLogger.info(
             "[LOOP] Task added"
@@ -70,53 +59,14 @@ class EventLoop:
 
 
 
-    def process_tasks(self):
-
-
-        while not self.tasks.empty():
-
-
-            task = self.tasks.pop()
-
-
-            try:
-
-
-                if callable(task):
-
-                    task()
-
-
-                elif hasattr(task, "callback"):
-
-                    task.callback()
-
-
-
-            except Exception as error:
-
-
-                AthenaLogger.error(
-
-                    f"[LOOP] Task error -> {error}"
-
-                )
-
-
-
-    def process_input(
-        self,
-        text
-    ):
+    def process_input(self, text):
 
 
         if not self.kernel:
 
-
             AthenaLogger.warning(
                 "[LOOP] Kernel unavailable"
             )
-
 
             return None
 
@@ -129,11 +79,9 @@ class EventLoop:
 
         if not executive:
 
-
             AthenaLogger.warning(
                 "[LOOP] Executive unavailable"
             )
-
 
             return None
 
@@ -166,7 +114,6 @@ class EventLoop:
 
         if telemetry:
 
-
             AthenaLogger.info(
                 "[LOOP] Autonomous telemetry cycle"
             )
@@ -195,6 +142,7 @@ class EventLoop:
             daemon=True
 
         )
+
 
 
         self.thread.start()
@@ -230,6 +178,7 @@ class EventLoop:
         )
 
 
+
         while self.running:
 
 
@@ -239,7 +188,9 @@ class EventLoop:
                 self.tick += 1
 
 
-                self.process_tasks()
+
+                self.tasks.run_pending()
+
 
 
                 self.autonomous_cycle()
@@ -251,9 +202,7 @@ class EventLoop:
 
                     try:
 
-
                         callback()
-
 
 
                     except Exception:

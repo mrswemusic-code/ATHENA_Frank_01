@@ -1,8 +1,7 @@
-from src.core.tasks.task import Task
+from src.core.planner.task import Task
 
 
 class Plan:
-
 
     def __init__(self, name):
 
@@ -83,11 +82,7 @@ class Plan:
 
             return 0
 
-
-        completed = len(
-            self.completed()
-        )
-
+        completed = len(self.completed())
 
         return round(
 
@@ -109,11 +104,9 @@ class Plan:
 
             "name": self.name,
 
-            "intent": self.intent,
-
             "progress": self.progress(),
 
-            "tasks":[
+            "tasks": [
 
                 task.to_dict()
 

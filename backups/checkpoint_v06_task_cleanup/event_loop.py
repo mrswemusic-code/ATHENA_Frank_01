@@ -1,9 +1,9 @@
 from src.core.logger.logger import AthenaLogger
-from src.core.task_manager.task_queue import TaskQueue
 
 import threading
 import time
 import traceback
+
 
 
 class EventLoop:
@@ -23,8 +23,6 @@ class EventLoop:
 
         self.rate = rate
 
-        self.tasks = TaskQueue()
-
         self.callbacks = []
 
         self.tick = 0
@@ -38,10 +36,7 @@ class EventLoop:
 
 
 
-    def register(
-        self,
-        callback
-    ):
+    def register(self, callback):
 
         self.callbacks.append(
             callback
@@ -54,69 +49,51 @@ class EventLoop:
 
 
 
-    def add_task(
-        self,
-        task
-    ):
-
-        self.tasks.push(
-            task
-        )
-
-
-        AthenaLogger.info(
-            "[LOOP] Task added"
-        )
-
-
-
-    def process_tasks(self):
-
-
-        while not self.tasks.empty():
-
-
-            task = self.tasks.pop()
-
-
-            try:
-
-
-                if callable(task):
-
-                    task()
-
-
-                elif hasattr(task, "callback"):
-
-                    task.callback()
-
-
-
-            except Exception as error:
-
-
-                AthenaLogger.error(
-
-                    f"[LOOP] Task error -> {error}"
-
-                )
-
-
-
-    def process_input(
-        self,
-        text
-    ):
-
+    def add_task(self, task):
 
         if not self.kernel:
-
 
             AthenaLogger.warning(
                 "[LOOP] Kernel unavailable"
             )
 
+            return
+
+
+
+        task_manager = self.kernel.get(
+            "tasks"
+        )
+
+
+        if not task_manager:
+
+            AthenaLogger.warning(
+                "[LOOP] Task Manager unavailable"
+            )
+
+            return
+
+
+
+        task_manager.submit(
+            task
+        )
+
+
+        AthenaLogger.info(
+            f"[LOOP] Task submitted -> {task.name}"
+        )
+
+
+
+    def process_input(self, text):
+
+        if not self.kernel:
+
+            AthenaLogger.warning(
+                "[LOOP] Kernel unavailable"
+            )
 
             return None
 
@@ -129,11 +106,9 @@ class EventLoop:
 
         if not executive:
 
-
             AthenaLogger.warning(
                 "[LOOP] Executive unavailable"
             )
-
 
             return None
 
@@ -152,7 +127,6 @@ class EventLoop:
 
     def autonomous_cycle(self):
 
-
         if not self.kernel:
 
             return
@@ -166,15 +140,38 @@ class EventLoop:
 
         if telemetry:
 
-
             AthenaLogger.info(
                 "[LOOP] Autonomous telemetry cycle"
             )
 
 
 
-    def start(self):
+    def process_tasks(self):
 
+        if not self.kernel:
+
+            return
+
+
+
+        task_manager = self.kernel.get(
+            "tasks"
+        )
+
+
+        if not task_manager:
+
+            return
+
+
+
+        while task_manager.pending() > 0:
+
+            task_manager.execute_next()
+
+
+
+    def start(self):
 
         if self.running:
 
@@ -209,11 +206,9 @@ class EventLoop:
 
     def stop(self):
 
-
         self.running = False
 
         self.state = "OFFLINE"
-
 
 
         AthenaLogger.info(
@@ -223,7 +218,6 @@ class EventLoop:
 
 
     def run(self):
-
 
         AthenaLogger.info(
             "[LOOP] Runtime started"
@@ -251,9 +245,7 @@ class EventLoop:
 
                     try:
 
-
                         callback()
-
 
 
                     except Exception:

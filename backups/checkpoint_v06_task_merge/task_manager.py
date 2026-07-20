@@ -1,12 +1,10 @@
 import time
 
 from src.core.logger.logger import AthenaLogger
-
 from src.core.task_manager.task_queue import TaskQueue
 
 
 class TaskManager:
-
 
     def __init__(self):
 
@@ -14,83 +12,58 @@ class TaskManager:
 
         self.history = []
 
-
         AthenaLogger.info(
             "[TASK MANAGER] Initialized"
         )
-
 
     def submit(self, task):
 
         task.status = "PENDING"
 
-        self.queue.push(
-            task
-        )
-
-
-        AthenaLogger.info(
-
-            f"[TASK MANAGER] Submitted -> {task.name}"
-
-        )
-
+        self.queue.push(task)
 
         return task
-
-
 
     def execute_next(self):
 
         task = self.queue.pop()
 
-
         if not task:
-
             return None
 
-
+        task.started = time.time()
 
         task.start()
 
-
         AthenaLogger.info(
-
             f"[TASK] Running -> {task.name}"
-
         )
-
-
-        started = time.time()
-
 
         try:
 
             output = task.callback()
 
-
-            task.complete(
-                output
-            )
-
+            task.finished = time.time()
 
             task.execution_time = (
-                time.time() - started
+
+                task.finished - task.started
+
             )
 
+            task.complete(output)
 
         except Exception as error:
 
-
-            task.fail(
-                error
-            )
-
+            task.finished = time.time()
 
             task.execution_time = (
-                time.time() - started
+
+                task.finished - task.started
+
             )
 
+            task.fail(str(error))
 
             AthenaLogger.error(
 
@@ -98,22 +71,13 @@ class TaskManager:
 
             )
 
-
-
-        self.history.append(
-            task
-        )
-
+        self.history.append(task)
 
         return task
-
-
 
     def pending(self):
 
         return self.queue.size()
-
-
 
     def completed(self):
 
@@ -121,17 +85,15 @@ class TaskManager:
 
             [
 
-                task
+                t
 
-                for task in self.history
+                for t in self.history
 
-                if task.status == "COMPLETED"
+                if t.status == "COMPLETED"
 
             ]
 
         )
-
-
 
     def failed(self):
 
@@ -139,17 +101,15 @@ class TaskManager:
 
             [
 
-                task
+                t
 
-                for task in self.history
+                for t in self.history
 
-                if task.status == "FAILED"
+                if t.status == "FAILED"
 
             ]
 
         )
-
-
 
     def history_list(self):
 
