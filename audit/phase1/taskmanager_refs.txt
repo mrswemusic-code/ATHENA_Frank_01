@@ -1,0 +1,11 @@
+src/core/execution/execution_engine.py:        task_manager = self.kernel.get(
+src/core/execution/execution_engine.py:        if not task_manager:
+src/core/execution/execution_engine.py:            athena_task = task_manager.submit(
+src/core/execution/execution_engine.py:        while task_manager.pending() > 0:
+src/core/execution/execution_engine.py:            executed = task_manager.execute_next()
+src/core/task_manager/task.py:from src.core.task_manager.task_state import TaskState
+src/core/task_manager/task.py:from src.core.task_manager.task_result import TaskResult
+src/core/task_manager/task_manager.py:from src.core.task_manager.task import Task
+src/core/task_manager/task_manager.py:from src.core.task_manager.task_state import TaskState
+src/core/task_manager/task_manager.py:from src.core.task_manager.task_queue import TaskQueue
+src/core/kernel/kernel.py:from src.core.task_manager.task_manager import TaskManager

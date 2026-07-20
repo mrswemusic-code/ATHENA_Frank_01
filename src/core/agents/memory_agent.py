@@ -1,112 +1,114 @@
 from src.core.agents.base_agent import BaseAgent
-from src.core.agents.core.agent_result import AgentResult
 from src.core.logger.logger import AthenaLogger
 
 
 class MemoryAgent(BaseAgent):
 
-    def __init__(self, name="memory"):
+    NAME = "memory"
 
-        super().__init__(name)
+    def __init__(self, kernel=None):
 
-        self.kernel = None
-
+        super().__init__(
+            self.NAME,
+            kernel
+        )
 
     def capabilities(self):
 
         return [
 
             "memory",
+
             "remember",
+
             "recall",
+
+            "search",
+
             "search_memory"
 
         ]
 
-
     def execute(self, task):
 
-        memory = self.kernel.get("memory")
+        AthenaLogger.info(
+            f"[MEMORY AGENT] Executing: {task.name}"
+        )
+
+        memory = self.kernel.get(
+            "memory"
+        )
+
+        if not memory:
+
+            return {
+
+                "error": "Memory Engine unavailable"
+
+            }
 
         action = task.action
 
-        payload = task.payload or {}
-
+        payload = getattr(
+            task,
+            "payload",
+            {}
+        ) or {}
 
         if action == "remember":
 
-            AthenaLogger.info("[MEMORY AGENT] Remember")
-
-            result = memory.remember(
+            return memory.remember(
 
                 key=payload.get("key"),
 
                 value=payload.get("value"),
 
-                category="conversation",
+                category=payload.get(
+                    "category",
+                    "general"
+                ),
 
-                persistent=True
-
-            )
-
-            return AgentResult(
-
-                success=True,
-                agent=self.name,
-                action="remember",
-                message="Stored",
-                data=result
+                persistent=payload.get(
+                    "persistent",
+                    False
+                )
 
             )
-
 
         if action == "recall":
 
-            AthenaLogger.info("[MEMORY AGENT] Recall")
-
-            result = memory.recall(
+            return memory.recall(
 
                 payload.get("key")
 
             )
 
-            return AgentResult(
+        if action in (
 
-                success=True,
-                agent=self.name,
-                action="recall",
-                message="Recovered",
-                data=result
+            "search",
 
-            )
+            "search_memory",
 
+            "memory"
 
-        if action == "search":
+        ):
 
-            AthenaLogger.info("[MEMORY AGENT] Search")
+            return memory.search(
 
-            result = memory.search(
+                payload.get(
 
-                payload.get("text","")
+                    "text",
 
-            )
+                    ""
 
-            return AgentResult(
-
-                success=True,
-                agent=self.name,
-                action="search",
-                message="Search complete",
-                data=result
+                )
 
             )
 
+        return {
 
-        return AgentResult(
+            "error":
 
-            success=False,
-            agent=self.name,
-            action=action,
-            message="Unsupported action"
+            f"Unsupported memory action: {action}"
 
-        )
+        }

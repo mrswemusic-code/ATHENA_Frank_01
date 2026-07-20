@@ -1,9 +1,6 @@
 import time
 
 from src.core.logger.logger import AthenaLogger
-
-from src.core.task_manager.task import Task
-from src.core.task_manager.task_state import TaskState
 from src.core.task_manager.task_queue import TaskQueue
 
 
@@ -19,52 +16,28 @@ class TaskManager:
             "[TASK MANAGER] Initialized"
         )
 
+    def submit(self, task):
 
-    def submit(
-
-        self,
-
-        name,
-
-        callback,
-
-        priority=5
-
-    ):
-
-        task = Task(
-
-            name=name,
-
-            callback=callback,
-
-            priority=priority
-
-        )
+        task.status = "PENDING"
 
         self.queue.push(task)
 
         return task
-
 
     def execute_next(self):
 
         task = self.queue.pop()
 
         if not task:
-
             return None
-
-
-        task.state = TaskState.RUNNING
 
         task.started = time.time()
 
+        task.start()
 
         AthenaLogger.info(
             f"[TASK] Running -> {task.name}"
         )
-
 
         try:
 
@@ -72,31 +45,25 @@ class TaskManager:
 
             task.finished = time.time()
 
-            task.progress = 100
-
-            task.state = TaskState.COMPLETED
-
-            task.result.success = True
-
-            task.result.output = output
-
-            task.result.execution_time = (
+            task.execution_time = (
 
                 task.finished - task.started
 
             )
 
+            task.complete(output)
 
         except Exception as error:
 
             task.finished = time.time()
 
-            task.state = TaskState.FAILED
+            task.execution_time = (
 
-            task.result.success = False
+                task.finished - task.started
 
-            task.result.error = str(error)
+            )
 
+            task.fail(str(error))
 
             AthenaLogger.error(
 
@@ -104,16 +71,13 @@ class TaskManager:
 
             )
 
-
         self.history.append(task)
 
         return task
 
-
     def pending(self):
 
         return self.queue.size()
-
 
     def completed(self):
 
@@ -125,12 +89,11 @@ class TaskManager:
 
                 for t in self.history
 
-                if t.state == TaskState.COMPLETED
+                if t.status == "COMPLETED"
 
             ]
 
         )
-
 
     def failed(self):
 
@@ -142,12 +105,11 @@ class TaskManager:
 
                 for t in self.history
 
-                if t.state == TaskState.FAILED
+                if t.status == "FAILED"
 
             ]
 
         )
-
 
     def history_list(self):
 

@@ -1,0 +1,65 @@
+src/core/context/context_engine.py:from src.core.context.context import Context
+src/core/context/context_engine.py:        self.context = Context()
+src/core/context/context_engine.py:            self.context,
+src/core/context/context_engine.py:                self.context,
+src/core/context/context_engine.py:            self.context.updated = datetime.now().strftime(
+src/core/context/context_engine.py:            self.context,
+src/core/context/context_engine.py:        self.context.conversation.append(
+src/core/context/context_engine.py:        return self.context.conversation
+src/core/context/context_engine.py:            self.context
+src/core/context/__init__.py:from .context_router import ContextRouter
+src/core/context/context_router.py:from src.core.context.conversation import Conversation
+src/core/context/context_router.py:from src.core.context.working_memory import WorkingMemory
+src/core/context/context_router.py:from src.core.context.cognitive_state import CognitiveState
+src/core/language/language_detector.py:from src.core.language.language_context import LanguageContext
+src/core/language/language_manager.py:        context = self.detector.detect(
+src/core/language/language_manager.py:        self.current = context.language
+src/core/language/language_manager.py:        return context
+src/core/kernel/kernel.py:from src.core.context import ContextRouter
+src/core/kernel/kernel.py:        self.context = None
+src/core/kernel/kernel.py:        self.context = ContextRouter()
+src/core/kernel/kernel.py:            "context": self.context,
+src/core/response/response_engine.py:from src.core.response.context import ResponseContext
+src/core/response/response_engine.py:        self.context = ResponseContext()
+src/core/response/response_engine.py:            self.context
+src/core/response/response_engine.py:        self.context.update(
+src/core/response/response_analyzer.py:        context=None
+src/core/response/response_analyzer.py:        if context:
+src/core/response/response_analyzer.py:                context,
+src/core/response/response_analyzer.py:        if context:
+src/core/response/response_analyzer.py:                context,
+src/core/response/__init__.py:from .response_context import ResponseContext
+src/core/cognition/reasoning_engine.py:    def analyze(self, intent, context=None):
+src/core/cognition/reasoning_engine.py:        context = context or {}
+src/core/cognition/reasoning_engine.py:            "context": context
+src/core/cognition/cognition_engine.py:    def think(self, intent, context=None):
+src/core/cognition/cognition_engine.py:            context
+src/core/brain/brain.py:from src.core.brain.context_manager import BrainContextManager
+src/core/brain/brain.py:from src.core.response.context import ResponseContext
+src/core/brain/brain.py:        self.context = BrainContextManager()
+src/core/brain/brain.py:        self.response_context = ResponseContext()
+src/core/brain/brain.py:        context = self.kernel.get(
+src/core/brain/brain.py:            "context"
+src/core/brain/brain.py:                    "[BRAIN] Memory context found"
+src/core/brain/brain.py:        self.response_context.update(
+src/core/brain/brain.py:        if context:
+src/core/brain/brain.py:            context.conversation.add(
+src/core/brain/brain.py:            context.state.update(
+src/core/brain/brain.py:        if context:
+src/core/brain/brain.py:            context.state.update(
+src/core/brain/brain.py:            response_engine.context = self.response_context
+src/core/brain/brain.py:                    "context":
+src/core/brain/brain.py:                    self.response_context.__dict__
+src/core/brain/brain.py:        self.context.update(
+src/core/brain/brain.py:        if context:
+src/core/brain/brain.py:            context.conversation.add(
+src/core/brain/brain.py:            context.state.update(
+src/core/brain/context_manager.py:        self.context = {
+src/core/brain/context_manager.py:        self.context["last_input"] = text
+src/core/brain/context_manager.py:        self.context["last_intent"] = intent
+src/core/brain/context_manager.py:        self.context["language"] = language
+src/core/brain/context_manager.py:        self.context["state"] = "READY"
+src/core/brain/context_manager.py:        self.context["history"].append(
+src/core/brain/context_manager.py:        return self.context.get(
+src/core/brain/context_manager.py:        return self.context["history"]
+src/core/brain/context_manager.py:        return self.context.copy()

@@ -1,0 +1,36 @@
+src/core/runtime/diagnostics.py:            "agents":
+src/core/kernel/kernel.py:from src.core.agents.agent_runtime import AgentRuntime
+src/core/kernel/kernel.py:        self.agents = None
+src/core/kernel/kernel.py:        self.agents = AgentRuntime(
+src/core/kernel/kernel.py:        self.agents.boot()
+src/core/kernel/kernel.py:            "agents": self.agents,
+src/core/router/executive_router.py:        agents = None
+src/core/router/executive_router.py:            agents = self.kernel.get(
+src/core/router/executive_router.py:                "agents"
+src/core/router/executive_router.py:        if not agents:
+src/core/router/executive_router.py:        agent = agents.get(
+src/core/agents/agent_registry.py:        self.agents = {}
+src/core/agents/agent_registry.py:        self.agents[
+src/core/agents/agent_registry.py:        return self.agents.get(name)
+src/core/agents/agent_registry.py:        return self.agents
+src/core/agents/agent_factory.py:from src.core.agents.system_agent import SystemAgent
+src/core/agents/agent_factory.py:from src.core.agents.memory_agent import MemoryAgent
+src/core/agents/agent_factory.py:from src.core.agents.voice_agent import VoiceAgent
+src/core/agents/agent_factory.py:from src.core.agents.internet_agent import InternetAgent
+src/core/agents/agent_factory.py:from src.core.agents.music_agent import MusicAgent
+src/core/agents/agent_factory.py:from src.core.agents.coding_agent import CodingAgent
+src/core/agents/agent_factory.py:from src.core.agents.vision_agent import VisionAgent
+src/core/agents/agent_factory.py:    agents = {
+src/core/agents/agent_factory.py:        agent_class = cls.agents[name]
+src/core/agents/vision_agent.py:from src.core.agents.base_agent import BaseAgent
+src/core/agents/voice_agent.py:from src.core.agents.base_agent import BaseAgent
+src/core/agents/memory_agent.py:from src.core.agents.base_agent import BaseAgent
+src/core/agents/memory_agent.py:from src.core.agents.core.agent_result import AgentResult
+src/core/agents/internet_agent.py:from src.core.agents.base_agent import BaseAgent
+src/core/agents/music_agent.py:from src.core.agents.base_agent import BaseAgent
+src/core/agents/coding_agent.py:from src.core.agents.base_agent import BaseAgent
+src/core/agents/agent_runtime.py:from src.core.agents.agent_registry import AgentRegistry
+src/core/agents/agent_runtime.py:from src.core.agents.agent_factory import AgentFactory
+src/core/agents/agent_runtime.py:        for name in AgentFactory.agents:
+src/core/agents/agent_runtime.py:            f"[AGENTS] {len(self.registry.all())} agents online"
+src/core/agents/system_agent.py:from src.core.agents.base_agent import BaseAgent

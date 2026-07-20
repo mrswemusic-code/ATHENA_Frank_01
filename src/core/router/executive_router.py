@@ -1,100 +1,69 @@
 from src.core.logger.logger import AthenaLogger
-from src.core.router.capability_matrix import CapabilityMatrix
-
 
 
 class ExecutiveRouter:
 
-
     """
-    ATHENA Executive Router
+    Dynamic Router
 
-    Dynamic agent selection using
-    capability matching.
+    The router does not know
+    any capability.
+
+    It simply asks AgentRuntime
+    which agent can execute
+    the task.
     """
-
-
 
     def __init__(self, kernel=None):
 
         self.kernel = kernel
 
-        self.capabilities = CapabilityMatrix()
-
-
         AthenaLogger.info(
             "Executive Router initialized."
         )
 
+    def select_agent(self, task):
 
+        if not self.kernel:
 
-    def select_agent(
-        self,
-        plan
-    ):
+            return None
 
+        runtime = self.kernel.get(
+            "agents"
+        )
 
-        agents = None
-
-
-        if self.kernel:
-
-            agents = self.kernel.get(
-                "agents"
-            )
-
-
-
-        if not agents:
+        if runtime is None:
 
             AthenaLogger.warning(
-                "[ROUTER] Agents unavailable"
+                "[ROUTER] Agent Runtime unavailable"
             )
 
             return None
 
-
-
         intent = getattr(
-            plan,
-            "intent",
-            "status"
+            task,
+            "action",
+            ""
         )
 
-
-
-        selected = self.capabilities.find_agent(
+        agent = runtime.resolve(
             intent
         )
 
-
-        if not selected:
-
-            selected = "system"
-
-
-
-        agent = agents.get(
-            selected
-        )
-
-
-
         if agent:
 
-
             AthenaLogger.info(
-                f"[ROUTER] Selected -> {selected}"
-            )
 
+                f"[ROUTER] {intent} -> {agent.name}"
+
+            )
 
             return agent
 
-
-
         AthenaLogger.warning(
-            "[ROUTER] No matching agent"
-        )
 
+            f"[ROUTER] No agent for '{intent}'"
+
+        )
 
         return None

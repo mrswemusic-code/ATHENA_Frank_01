@@ -1,10 +1,8 @@
 from src.core.logger.logger import AthenaLogger
-
 from src.core.execution.execution_result import ExecutionResult
 
 
 class ExecutionEngine:
-
 
     def __init__(self, kernel):
 
@@ -14,14 +12,11 @@ class ExecutionEngine:
             "Execution Engine initialized."
         )
 
-
     def execute_plan(self, plan):
-
 
         task_manager = self.kernel.get(
             "tasks"
         )
-
 
         if not task_manager:
 
@@ -29,59 +24,32 @@ class ExecutionEngine:
                 "[EXECUTION] Task Manager unavailable"
             )
 
-            return self._execute_direct(
-                plan
-            )
-
+            return self._execute_direct(plan)
 
         AthenaLogger.info(
-            "[EXECUTION] Routing plan through Task Manager"
+            "[EXECUTION] Executing plan"
         )
-
-
-        tasks = []
-
 
         for task in plan.tasks:
 
-
-            athena_task = task_manager.submit(
-
-                name=task.name,
-
-                callback=lambda t=task: self._execute_task(t),
-
-                priority=getattr(
-                    task,
-                    "priority",
-                    5
-                )
-
+            task.callback = (
+                lambda t=task:
+                self._execute_task(t)
             )
 
-
-            tasks.append(
-                athena_task
-            )
-
+            task_manager.submit(task)
 
         results = []
 
-
         while task_manager.pending() > 0:
 
-
             executed = task_manager.execute_next()
-
 
             if executed:
 
                 results.append(
-
-                    executed.result.output
-
+                    executed.result
                 )
-
 
         return ExecutionResult(
 
@@ -93,72 +61,43 @@ class ExecutionEngine:
 
         )
 
-
-
     def _execute_task(self, task):
-
 
         router = self.kernel.get(
             "router"
         )
 
-
-        agent = router.select_agent(
-            task
-        )
-
+        agent = router.select_agent(task)
 
         if agent:
 
             AthenaLogger.info(
+
                 f"[EXECUTION] Agent -> {agent.name}"
+
             )
 
+            return agent.execute(task)
 
-            result = agent.execute(
-                task
-            )
+        command_bus = self.kernel.get(
+            "command_bus"
+        )
 
-
-        else:
-
-            command_bus = self.kernel.get(
-                "command_bus"
-            )
-
-
-            result = command_bus.dispatch(
-                task.action
-            )
-
-
-        return {
-
-            "task":
-                task.name,
-
-            "result":
-                result
-
-        }
-
-
+        return command_bus.dispatch(
+            task.action
+        )
 
     def _execute_direct(self, plan):
 
-
         results = []
 
-
         for task in plan.tasks:
-
 
             results.append(
 
                 self._execute_task(task)
 
             )
-
 
         return ExecutionResult(
 

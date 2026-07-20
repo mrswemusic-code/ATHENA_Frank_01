@@ -1,33 +1,33 @@
 {
     "creator": {
-        "id": "bf46b01e-4e57-42dc-95b1-15e83fdf3233",
+        "id": "3a9f47b7-5584-4bf5-bcba-e93bfb448136",
         "key": "creator",
         "value": "Mr.Swe",
         "category": "general",
         "language": "es",
         "confidence": 1.0,
-        "created_at": "2026-07-19 01:47:13"
+        "created_at": "2026-07-19 02:03:28"
     },
     "project": {
-        "id": "9f0318ed-ef76-4b22-bfa0-ac364b1e5dbd",
+        "id": "2c177936-2d0c-43cc-ae02-d90d3a21ff10",
         "key": "project",
         "value": "ATHENA AI OS",
         "category": "general",
         "language": "es",
         "confidence": 1.0,
-        "created_at": "2026-07-19 01:47:13"
+        "created_at": "2026-07-19 02:03:28"
     },
     "browser": {
-        "id": "b86571f4-b212-4094-836b-4a64a54fce14",
+        "id": "beeb53e4-e2e6-4643-9eef-9c5e027659dd",
         "key": "browser",
         "value": "Brave",
         "category": "preference",
         "language": "es",
         "confidence": 1.0,
-        "created_at": "2026-07-19 01:47:13"
+        "created_at": "2026-07-19 02:03:28"
     },
     "conversation_0": {
-        "id": "c0b0b1ac-b988-4b60-b447-7d72141b4def",
+        "id": "bf2edf96-43ce-44ec-9636-59123b3af82b",
         "key": "conversation_0",
         "value": {
             "input": "estado",
@@ -49,7 +49,7 @@
                     "confidence": 1.0
                 }
             },
-            "response": "ATHENA:\n\nEstado del sistema actualizado.\n\nCPU: 29.1%\nMemoria RAM: 30.3%\nDisco utilizado: 2.0%\nTemperatura: 94.0\u00b0C",
+            "response": "ATHENA:\n\nEstado del sistema actualizado.\n\nCPU: 40.2%\nMemoria RAM: 31.2%\nDisco utilizado: 2.0%\nTemperatura: 98.0\u00b0C",
             "context": {
                 "user_intent": null,
                 "language": "es",
@@ -68,19 +68,19 @@
         "category": "conversation",
         "language": "es",
         "confidence": 1.0,
-        "created_at": "2026-07-19 01:47:14"
+        "created_at": "2026-07-19 02:03:28"
     },
     "usuario": {
-        "id": "0aecc8b8-d8c0-4426-b08d-c663cc7720f8",
+        "id": "669dd099-350a-4c78-9c1a-5241049624a0",
         "key": "usuario",
         "value": "Francesco",
         "category": "profile",
         "language": "es",
         "confidence": 1.0,
-        "created_at": "2026-07-19 01:47:14"
+        "created_at": "2026-07-19 02:03:28"
     },
     "conversation_1": {
-        "id": "6040f8fe-e119-4e58-b375-2c08618744bd",
+        "id": "79f2137f-506d-4af0-b997-fea25c6dbba8",
         "key": "conversation_1",
         "value": {
             "input": "estado",
@@ -102,7 +102,7 @@
                     "confidence": 1.0
                 }
             },
-            "response": "ATHENA:\n\nEstado del sistema actualizado.\n\nCPU: 60.0%\nMemoria RAM: 30.4%\nDisco utilizado: 2.0%\nTemperatura: 98.0\u00b0C",
+            "response": "ATHENA:\n\nEstado del sistema actualizado.\n\nCPU: 50.0%\nMemoria RAM: 30.6%\nDisco utilizado: 2.0%\nTemperatura: 92.0\u00b0C",
             "context": {
                 "user_intent": null,
                 "language": "es",
@@ -121,10 +121,10 @@
         "category": "conversation",
         "language": "es",
         "confidence": 1.0,
-        "created_at": "2026-07-19 01:47:03"
+        "created_at": "2026-07-19 02:03:17"
     },
     "conversation_2": {
-        "id": "8848f3ef-9d84-4d57-9a89-b9d00d475a7c",
+        "id": "c11bc5fe-48a1-4619-805f-d65cab8bce71",
         "key": "conversation_2",
         "value": {
             "input": "c\u00f3mo est\u00e1 el sistema",
@@ -146,7 +146,7 @@
                     "confidence": 1.0
                 }
             },
-            "response": "ATHENA:\n\nEstado del sistema actualizado.\n\nCPU: 66.7%\nMemoria RAM: 30.4%\nDisco utilizado: 2.0%\nTemperatura: 98.0\u00b0C",
+            "response": "ATHENA:\n\nEstado del sistema actualizado.\n\nCPU: 25.0%\nMemoria RAM: 30.6%\nDisco utilizado: 2.0%\nTemperatura: 92.0\u00b0C",
             "context": {
                 "user_intent": null,
                 "language": "es",
@@ -165,10 +165,10 @@
         "category": "conversation",
         "language": "es",
         "confidence": 1.0,
-        "created_at": "2026-07-19 01:47:03"
+        "created_at": "2026-07-19 02:03:18"
     },
     "conversation_3": {
-        "id": "ee9b9bd3-e6d9-46b1-9a78-bf29d87ebeba",
+        "id": "c0885c20-0812-4c90-afde-ffb404cfcde1",
         "key": "conversation_3",
         "value": {
             "input": "system",
@@ -190,7 +190,7 @@
                     "confidence": 1.0
                 }
             },
-            "response": "ATHENA:\n\nEstado del sistema actualizado.\n\nCPU: 57.1%\nMemoria RAM: 30.4%\nDisco utilizado: 2.0%\nTemperatura: 98.0\u00b0C",
+            "response": "ATHENA:\n\nEstado del sistema actualizado.\n\nCPU: 60.0%\nMemoria RAM: 30.6%\nDisco utilizado: 2.0%\nTemperatura: 92.0\u00b0C",
             "context": {
                 "user_intent": null,
                 "language": "es",
@@ -209,10 +209,10 @@
         "category": "conversation",
         "language": "es",
         "confidence": 1.0,
-        "created_at": "2026-07-19 01:47:03"
+        "created_at": "2026-07-19 02:03:18"
     },
     "conversation_4": {
-        "id": "4ba63c2f-be01-4f9b-a322-944a719a2b6a",
+        "id": "20c0ee41-2842-45e0-b150-3b9d18fd49e2",
         "key": "conversation_4",
         "value": {
             "input": "hola",
@@ -234,7 +234,7 @@
                     "confidence": 1.0
                 }
             },
-            "response": "ATHENA:\n\nEstado del sistema actualizado.\n\nCPU: 50.0%\nMemoria RAM: 30.4%\nDisco utilizado: 2.0%\nTemperatura: 98.0\u00b0C",
+            "response": "ATHENA:\n\nEstado del sistema actualizado.\n\nCPU: 42.9%\nMemoria RAM: 30.6%\nDisco utilizado: 2.0%\nTemperatura: 92.0\u00b0C",
             "context": {
                 "user_intent": null,
                 "language": "es",
@@ -253,6 +253,6 @@
         "category": "conversation",
         "language": "es",
         "confidence": 1.0,
-        "created_at": "2026-07-19 01:47:03"
+        "created_at": "2026-07-19 02:03:18"
     }
 }

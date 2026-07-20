@@ -1,69 +1,79 @@
-
+from abc import ABC
 
 from src.core.logger.logger import AthenaLogger
 
 
+class BaseAgent(ABC):
+    """
+    Base class for every ATHENA Agent.
 
-class BaseAgent:
+    Every specialized agent must inherit from this class.
+    """
 
-
-    def __init__(
-        self,
-        name
-    ):
+    def __init__(self, name: str, kernel=None):
 
         self.name = name
-
-        self.kernel = None
+        self.kernel = kernel
 
         self.online = False
-
 
         AthenaLogger.info(
             f"[AGENT] {self.name} created"
         )
 
-
+    # --------------------------------------------------
 
     def boot(self):
 
         self.online = True
 
-
         AthenaLogger.info(
             f"[AGENT] {self.name} ONLINE"
         )
 
+    # --------------------------------------------------
 
+    def shutdown(self):
+
+        self.online = False
+
+        AthenaLogger.info(
+            f"[AGENT] {self.name} OFFLINE"
+        )
+
+    # --------------------------------------------------
 
     def capabilities(self):
 
+        """
+        List of supported capabilities.
+
+        Example:
+
+        return [
+            "status",
+            "hardware",
+            "files"
+        ]
+        """
+
         return []
 
+    # --------------------------------------------------
 
+    def can_handle(self, capability: str):
 
-    def can_handle(
-        self,
-        intent
-    ):
+        return capability in self.capabilities()
 
-        return intent in self.capabilities()
+    # --------------------------------------------------
 
+    def execute(self, task):
 
-
-    def execute(
-        self,
-        task
-    ):
-
-        AthenaLogger.warning(
-            f"{self.name} has no executor"
+        raise NotImplementedError(
+            f"{self.name} must implement execute()"
         )
 
-
-        return None
-
-
+    # --------------------------------------------------
 
     def status(self):
 
@@ -73,8 +83,6 @@ class BaseAgent:
 
             "online": self.online,
 
-            "capabilities":
-                self.capabilities()
+            "capabilities": self.capabilities()
 
         }
-
